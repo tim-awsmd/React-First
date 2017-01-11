@@ -1,6 +1,7 @@
 import './App.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import EventEmitter from 'events'
 
 'use strict';
 
@@ -23,7 +24,7 @@ var my_news = [
 	}
 ];
 
-window.ee = new EventEmitter;
+window.ee = new EventEmitter();
 
 var Article = React.createClass({
 	propTypes: {
@@ -63,8 +64,6 @@ var Article = React.createClass({
 	}
 });
 
-
-
 // News block
 var News = React.createClass({
 	propTypes: {
@@ -101,8 +100,6 @@ var News = React.createClass({
 	}
 });
 
-
-
 var Add = React.createClass({
 	getInitialState: function() {
 		return {
@@ -132,6 +129,7 @@ var Add = React.createClass({
 		textEl.value = '';
 		this.setState({textIsEmpty: true});
 	},
+	// eslint-disable-next-line
 	onCheckRuleClick: function(e) {
 		this.setState({agreeNotChecked: !this.state.agreeNotChecked});
 	},
@@ -178,22 +176,20 @@ var Add = React.createClass({
 	}
 });
 
-
-
 var App = React.createClass({
-	getInitialState: function () {
+	getInitialState: function() {
 		return {
 			news: my_news
 		};
 	},
-	componentDidMount: function () {
+	componentDidMount: function() {
 		var self = this;
-		window.ee.addListener('News.add', function (item) {
+		window.ee.addListener('News.add', function(item) {
 			var nextNews = item.concat(self.state.news);
 			self.setState({news: nextNews});
-		})
+		});
 	},
-	componentWillMount: function () {
+	componentWillUnmount: function() {
 		window.ee.removeListener('News.add');
 	},
 	render: function() {
