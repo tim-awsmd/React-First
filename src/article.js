@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 var Article = React.createClass({
 	propTypes: {
 		data: React.PropTypes.shape({
