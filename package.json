@@ -12,11 +12,16 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   },
   "devDependencies": {
-    "nwb": "0.13.x"
+    "nwb": "0.13.x",
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.4.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-react": "^6.2.0"
   },
   "author": "",
   "license": "MIT",
