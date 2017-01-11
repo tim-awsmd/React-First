@@ -1,4 +1,4 @@
-export var my_news = [
+var news = [
 	{
 		author: 'Саша Печкин',
 		text: 'В четчерг, четвертого числа...',
@@ -16,3 +16,4 @@ export var my_news = [
 	}
 ];
 
+export default news

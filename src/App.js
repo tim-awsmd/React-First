@@ -2,7 +2,8 @@ import './App.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import EventEmitter from 'events'
-import {my_news} from './my_news'
+import news from './my_news'
+
 
 'use strict';
 
@@ -161,7 +162,7 @@ var Add = React.createClass({
 var App = React.createClass({
 	getInitialState: function() {
 		return {
-			news: my_news
+			news: news
 		};
 	},
 	componentDidMount: function() {
