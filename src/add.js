@@ -22,7 +22,7 @@ var Add = React.createClass({
 		var item = [{
 			author: author,
 			text: text,
-			bigText: '...'
+			bigText: 'Some text'
 		}];
 
 		window.ee.emit('News.add', item);

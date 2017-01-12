@@ -17,21 +17,40 @@ var Article = React.createClass({
 		e.preventDefault();
 		this.setState({visible: true});
 	},
+
+	hideClick: function (e) {
+		this.setState({visible: true});
+	},
+
 	render: function() {
 		var author = this.props.data.author,
 			text = this.props.data.text,
 			bigText = this.props.data.bigText,
 			visible = this.state.visible;
 
+		// return (
+		// 	<div className="article">
+		// 		<p className="news__author">{author}:</p>
+		// 		<p className="news__text">{text}</p>
+		// 		<a href="#"
+		// 			onClick={this.readmoreClick}
+		// 			className={'news__readmore ' + (visible ? 'none': '')}>
+		// 			Подробнее
+		// 		</a>
+		// 		<p className={'news__big-text ' + (visible ? '': 'none')}>{bigText}</p>
+		// 	</div>
+		// )
+
+
 		return (
 			<div className="article">
 				<p className="news__author">{author}:</p>
 				<p className="news__text">{text}</p>
-				<a href="#"
+				<button
 					onClick={this.readmoreClick}
-					className={'news__readmore ' + (visible ? 'none': '')}>
-					Подробнее
-				</a>
+					className={'news__readmore ' + visible}>
+					Подроблнее
+				</button>
 				<p className={'news__big-text ' + (visible ? '': 'none')}>{bigText}</p>
 			</div>
 		)
