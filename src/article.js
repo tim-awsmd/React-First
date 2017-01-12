@@ -18,10 +18,19 @@ var Article = React.createClass({
 		this.setState({visible: true});
 	},
 
-	hideClick: function (e) {
+	hideClick: function(e) {
 		e.preventDefault();
 		this.setState({visible: false});
 	},
+
+	// additionalText: function(e) {
+	// 	if ('news__readmore ' + visible) {
+	// 		this.setState('news__readmore')
+	// 	} else {
+	//
+	// 	}
+	//
+	// },
 
 	render: function() {
 		var author = this.props.data.author,
@@ -55,7 +64,7 @@ var Article = React.createClass({
 
 				<button
 					onClick={this.hideClick}
-					className={'news__readmore ' + visible}>
+					className='news__readmore'>
 					Скрыть
 				</button>
 

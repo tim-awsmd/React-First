@@ -62,3 +62,14 @@ p {
   background: #CCC;
   color: #999;
 }
+
+.news__readmore {
+  outline: none;
+  padding: 5px 10px;
+  background-color: transparent;
+  margin: 5px 0;
+  margin-right: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 20px;
+
+}

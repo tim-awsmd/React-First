@@ -41,6 +41,7 @@ var Add = React.createClass({
 			this.setState({[''+fieldName]:true})
 		}
 	},
+
 	render: function() {
 		var agreeNotChecked = this.state.agreeNotChecked,
 			authorIsEmpty = this.state.authorIsEmpty,
