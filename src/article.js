@@ -19,7 +19,8 @@ var Article = React.createClass({
 	},
 
 	hideClick: function (e) {
-		this.setState({visible: true});
+		e.preventDefault();
+		this.setState({visible: false});
 	},
 
 	render: function() {
@@ -51,6 +52,13 @@ var Article = React.createClass({
 					className={'news__readmore ' + visible}>
 					Подроблнее
 				</button>
+
+				<button
+					onClick={this.hideClick}
+					className={'news__readmore ' + visible}>
+					Скрыть
+				</button>
+
 				<p className={'news__big-text ' + (visible ? '': 'none')}>{bigText}</p>
 			</div>
 		)
