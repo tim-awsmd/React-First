@@ -1,77 +1,47 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 
-var Article = React.createClass({
-	propTypes: {
-		data: React.PropTypes.shape({
-			author: React.PropTypes.string.isRequired,
-			text: React.PropTypes.string.isRequired,
-			bigText: React.PropTypes.string.isRequired
-		})
-	},
-	getInitialState: function() {
-		return {
-			visible: false
-		};
-	},
-	readmoreClick: function(e) {
-		e.preventDefault();
-		this.setState({visible: true});
-	},
+class Article extends Component {
+	state = {
+		visible: false
+	};
 
-	hideClick: function(e) {
-		e.preventDefault();
-		this.setState({visible: false});
-	},
+	toggleBigText() {
+		this.setState({visible: !this.state.visible})
+	}
 
-	// additionalText: function(e) {
-	// 	if ('news__readmore ' + visible) {
-	// 		this.setState('news__readmore')
-	// 	} else {
-	//
-	// 	}
-	//
-	// },
+	render() {
+		const { author, text, bigText } = this.props.data;
+		const { visible } = this.state;
 
-	render: function() {
-		var author = this.props.data.author,
-			text = this.props.data.text,
-			bigText = this.props.data.bigText,
-			visible = this.state.visible;
+		let button;
 
-		// return (
-		// 	<div className="article">
-		// 		<p className="news__author">{author}:</p>
-		// 		<p className="news__text">{text}</p>
-		// 		<a href="#"
-		// 			onClick={this.readmoreClick}
-		// 			className={'news__readmore ' + (visible ? 'none': '')}>
-		// 			Подробнее
-		// 		</a>
-		// 		<p className={'news__big-text ' + (visible ? '': 'none')}>{bigText}</p>
-		// 	</div>
-		// )
-
+		if (bigText) {
+			button = (
+				<button
+					onClick={::this.toggleBigText}
+					className={'news__readmore ' + visible}>
+					{ visible ? 'Hide' : 'Show'}
+				</button>
+			)
+		}
 
 		return (
 			<div className="article">
-				<p className="news__author">{author}:</p>
+				{author && <p className="news__author">{author}:</p> }
 				<p className="news__text">{text}</p>
-				<button
-					onClick={this.readmoreClick}
-					className={'news__readmore ' + visible}>
-					Подроблнее
-				</button>
-
-				<button
-					onClick={this.hideClick}
-					className='news__readmore'>
-					Скрыть
-				</button>
-
-				<p className={'news__big-text ' + (visible ? '': 'none')}>{bigText}</p>
+				{ visible && <p className="news__big-text">{bigText}</p> }
+				{ bigText && button }
 			</div>
 		)
 	}
-});
+}
+
+Article.propTypes = {
+	data: PropTypes.shape({
+		author: PropTypes.string.isRequired,
+		text: PropTypes.string.isRequired,
+		bigText: PropTypes.string.isRequired
+	})
+};
 
 export default Article

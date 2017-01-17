@@ -17,7 +17,7 @@ var News = React.createClass({
 		if (data.length > 0) {
 			newsTemplate = data.map(function(item, index) {
 				return (
-					<div key={index}>
+					<div key={index + Math.random()}>
 						<Article data={item} />
 					</div>
 				)

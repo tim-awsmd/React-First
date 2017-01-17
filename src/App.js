@@ -13,7 +13,7 @@ window.ee = new EventEmitter();
 var App = React.createClass({
 	getInitialState: function() {
 		return {
-			news: news
+			news
 		};
 	},
 	componentDidMount: function() {
