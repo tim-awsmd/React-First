@@ -11,7 +11,7 @@ var News = React.createClass({
 		}
 	},
 	render: function() {
-		const {data} = this.props.data;
+		const {data} = this.props;
 		var newsTemplate;
 
 		if (data.length > 0) {
