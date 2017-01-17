@@ -1,18 +1,17 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-var Add = React.createClass({
-	getInitialState: function() {
-		return {
-			agreeNotChecked: true,
-			authorIsEmpty: true,
-			textIsEmpty: true
-		};
-	},
-	componentDidMount: function() {
+
+class Add extends Component {
+	state = {
+		agreeNotChecked: true,
+		authorIsEmpty: true,
+		textIsEmpty: true
+	};
+	componentDidMount() {
 		ReactDOM.findDOMNode(this.refs.author).focus();
-	},
-	onBtnClickHandler: function(e) {
+	}
+	onBtnClickHandler(e) {
 		e.preventDefault();
 		var textEl = ReactDOM.findDOMNode(this.refs.text);
 
@@ -29,53 +28,51 @@ var Add = React.createClass({
 
 		textEl.value = '';
 		this.setState({textIsEmpty: true});
-	},
-	// eslint-disable-next-line
-	onCheckRuleClick: function(e) {
+	}
+	onCheckRuleClick() {
 		this.setState({agreeNotChecked: !this.state.agreeNotChecked});
-	},
-	onFieldChange: function(fieldName, e) {
+	}
+	onFieldChange(fieldName, e) {
 		if (e.target.value.trim().length > 0) {
 			this.setState({[''+fieldName]:false})
 		} else {
 			this.setState({[''+fieldName]:true})
 		}
-	},
+	}
 
-	render: function() {
-		var agreeNotChecked = this.state.agreeNotChecked,
-			authorIsEmpty = this.state.authorIsEmpty,
-			textIsEmpty = this.state.textIsEmpty;
+	render() {
+		const { agreeNotChecked, authorIsEmpty, textIsEmpty } = this.state;
 		return (
-			<form className="add cf">
-				<input
-					type="text"
-					className="add__author"
-					onChange={this.onFieldChange.bind(this, 'authorIsEmpty')}
-					placeholder="Ваше имя"
-					ref="author"
-				/>
-				<textarea
-					className="add__text"
-					onChange={this.onFieldChange.bind(this, 'textIsEmpty')}
-					placeholder="Текст новости"
-					ref="text"
-				></textarea>
-				<label className="add__checkrule">
-					<input type="checkbox" ref="checkrule" onChange={this.onCheckRuleClick}/>Я согласен с правилами
-				</label>
+				<form className="add cf">
+					<input
+						type="text"
+						className="add__author"
+						onChange={this.onFieldChange.bind(this, 'authorIsEmpty')}
+						placeholder="Ваше имя"
+						ref="author"
+					/>
+					<textarea
+						className="add__text"
+						onChange={this.onFieldChange.bind(this, 'textIsEmpty')}
+						placeholder="Текст новости"
+						ref="text"
+					></textarea>
+					<label className="add__checkrule">
+						<input type="checkbox" ref="checkrule" onChange={this.onCheckRuleClick}/>Я согласен с правилами
+					</label>
 
-				<button
-					className="add__btn"
-					onClick={this.onBtnClickHandler}
-					ref="alert_button"
-					disabled={agreeNotChecked || authorIsEmpty || textIsEmpty}
-				>
-					Опубликовать новость
-				</button>
-			</form>
+					<button
+						className="add__btn"
+						onClick={this.onBtnClickHandler}
+						ref="alert_button"
+						disabled={agreeNotChecked || authorIsEmpty || textIsEmpty}
+					>
+						Опубликовать новость
+					</button>
+				</form>
 		);
 	}
-});
+}
+
 
 export default Add

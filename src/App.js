@@ -5,7 +5,6 @@ import news from './my_news'
 import Add from './add'
 import News from './news'
 
-
 'use strict';
 
 window.ee = new EventEmitter();
